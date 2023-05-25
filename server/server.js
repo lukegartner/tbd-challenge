@@ -22,7 +22,7 @@ app.get("/ping", (req, res) => {
 });
 
 app.get("/messages", (req, res) => {
-  let queryText = 'SELECT * FROM "messages"';
+  let queryText = 'SELECT * FROM "messages";';
 
   pool
     .query(queryText)
