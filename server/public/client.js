@@ -1,8 +1,19 @@
-console.log(
-  JSON.stringify({
-    id: 2,
-    title: "postTest",
-    text: "this is a test from post man",
-    timestamp: "2023-05-24T15:45:30.000Z",
-  })
-);
+const messageContainer = document.querySelector(".message-container");
+
+const getMessages = () => {
+  fetch("/messages")
+    .then((response) => response.json())
+    .then((messages) => {
+      messageContainer.innerHTML = messages
+        .map((message) => {
+          return `
+             <div class="message">
+             <h2>${message.title}</h2>
+             <p>${message.text}</p>
+        </div>
+        `;
+        })
+        .join("");
+    });
+};
+getMessages();
