@@ -22,7 +22,11 @@ app.get("/ping", (req, res) => {
 });
 
 app.get("/messages", (req, res) => {
-  let queryText = 'SELECT * FROM "messages";';
+  let queryText = `
+    SELECT * FROM "messages"
+    ORDER BY "timestamp" DESC
+    LIMIT 10;
+  `;
 
   pool
     .query(queryText)
