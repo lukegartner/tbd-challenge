@@ -34,6 +34,22 @@ app.get("/messages", (req, res) => {
     });
 });
 
+get.post("/messages", (req, res) => {
+  const newMessage = req.body;
+  const queryText = `
+    INSERT INTO "messages" ("id", "title", "text", "timestamp")
+    VALUES ('${newMessage.id}', '${newMessage.title}', '${newMessage.text}', '${newMessage.timestamp}');
+    `;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
 app.listen(PORT, () => {
   console.log("Listening on PORT", PORT);
 });
