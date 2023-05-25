@@ -34,7 +34,7 @@ app.get("/messages", (req, res) => {
     });
 });
 
-get.post("/messages", (req, res) => {
+app.post("/messages", (req, res) => {
   const newMessage = req.body;
   const queryText = `
     INSERT INTO "messages" ("id", "title", "text", "timestamp")
