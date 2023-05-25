@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
-const DB_PASSWORD = process.env(DB_PASSWORD);
+const DB_PASSWORD = process.env.DB_PASSWORD;
 
 const pg = require("pg");
 const pool = new pg.Pool({
